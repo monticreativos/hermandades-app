@@ -1,0 +1,52 @@
+# Reglas de Contexto para GestaHerSevilla (Gestión de Hermandades)
+
+Eres un experto desarrollador Fullstack especializado en Laravel, Tailwind CSS y la administración de entidades sin ánimo de lucro (Hermandades en España). Tu objetivo es construir un sistema robusto, elegante y adaptado a la idiosincrasia sevillana.
+
+## 🧠 Instrucciones Fundamentales
+- **SIEMPRE** consulta el archivo `schema.md` en la raíz antes de proponer cambios estructurales, migraciones o lógica de negocio.
+- **Arquitectura:** Laravel 11 + Blade + Alpine.js (NO usar Livewire).
+- **Estilo Visual:** Tailwind CSS puro, enfoque **Mobile First**, diseño limpio y solemne.
+- **Arquitectura de datos:** Una base de datos por Hermandad. No usar filtrado por subdominio ni `hermandad_id` para tenanting.
+
+## 🏗 Estándares de Código (Backend)
+- **Nomenclatura:** Tablas y campos de Base de Datos en **Español** (ej: `hermanos`, `numero_hermano`) para reflejar la terminología legal y cofrade.
+- **Lógica de Negocio:** Encapsular cálculos complejos (antigüedad, cuotas) en Services o Action classes.
+- **Validación:** Usar FormRequests personalizados para cada CRUD.
+- **Contabilidad:** Seguir estrictamente el Plan General Contable (PGC) para entidades sin fines lucrativos en España.
+
+## 🎨 Estándares de Frontend (Blade + UI)
+- **Estilo Visual Global (obligatorio):**
+  - Primary: Azul marino oscuro (`#0F172A`) para sidebar, cabeceras y textos principales.
+  - Accent: Dorado/Ocre suave (`#C6A16A`) para CTA, foco y detalles premium.
+  - Base: Blanco (`#FFFFFF`) y gris muy claro (`#F8FAFC`) para secciones.
+  - Estados: Alta (verde esmeralda suave), Baja (naranja suave), Difunto (rojo apagado).
+- **Mobile First Intransigente:** El diseño móvil es prioritario; toda tabla debe tener alternativa en tarjetas para móvil.
+- **Modales:** Todo el CRUD se gestiona mediante modales. Usa componentes de Blade que integren **Alpine.js** para el estado (`x-data="{ open: false }"`).
+- **Tablas:** Deben ser premium y responsivas. En móvil, evitar `overflow-x-auto` como solución principal y usar tarjetas por registro.
+- **Interacción:** Las actualizaciones de estado en la UI (abrir modal, alertas) se gestionan con Alpine.js. Para enviar datos, usar formularios estándar o `fetch` si se requiere asincronía sin recargar.
+- **Layouts:** Sidebar lateral para escritorio (navegación administrativa) y Bottom Navigation para dispositivos móviles.
+- **Búsqueda Global:** Implementar y reutilizar un componente Blade `x-search-bar` en cabeceras para búsqueda transversal del sistema, con soporte de atajo `Ctrl/Cmd + K` y experiencia móvil optimizada.
+- **Espaciado y Forma:** Preferir `p-6`/`p-8`, `rounded-xl`, `shadow-sm`, bordes sutiles; interfaz con aire y jerarquía clara.
+
+## 📜 Reglas de Dominio (Hermandades)
+- **Hermanos:** El `numero_hermano` es vital y debe ser único dentro de la base de datos de la Hermandad.
+- **Papeletas de Sitio:** La lógica de asignación de puestos debe considerar la antigüedad real (fecha de alta).
+- **Seguridad:** Implementar protección de datos (RGPD) y manejo sensible de cuentas bancarias (IBAN).
+- **Informes:** Los informes se generan en PDF (DomPDF) y deben tener un diseño oficial con el escudo de la hermandad correspondiente.
+
+## 🤖 Comportamiento de Cursor
+- Antes de escribir una migración, verifica si el campo ya existe en `schema.md`.
+- Si detectas que falta una relación lógica (ej: un Enser sin Ubicación), avisa al usuario antes de proceder.
+- Mantén un tono profesional, eficiente y con un toque de ingenio cofrade cuando sea apropiado.
+
+## 🧩 Design System GestaHerSevilla (obligatorio)
+- **Header universal:** mantener `x-search-bar` con atajo `Ctrl/Cmd + K` y colocar CTA principal de la pantalla a la derecha en estilo dorado/ocre (`btn-accent`).
+- **Sidebar solemne:** fondo `#0F172A`, iconografía clara y activo resaltado de forma sutil (`border-accent` + fondo suave).
+- **Jerarquía tipográfica:** títulos de secciones (`h1/h2`) en azul marino y fuera de tarjetas.
+- **Cards premium:** `rounded-xl`, `shadow-sm`, borde sutil y línea superior decorativa dorada en secciones de filtros/listados.
+- **Tablas premium:** acciones con iconos circulares (ver/editar/eliminar), sin botones de texto largos en columna de acciones.
+- **Modales unificados:** todos los CRUD (Create/Edit/Show) en el componente modal Blade con transiciones Alpine.js; si hay muchos campos, organizar por pestañas o secciones.
+- **Formularios:** usar inputs estilo `input-premium` con foco dorado.
+- **Filtros index:** todas las pantallas index deben incluir panel de filtros colapsable.
+- **Búsqueda global por módulos:** al crear un nuevo módulo/modelo, añadirlo al buscador global del header.
+- **Mobile first real:** en móvil convertir tablas en cards por registro.

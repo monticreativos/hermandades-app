@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-primary: #0f172a;
+        --color-primary-soft: #1e293b;
+        --color-accent: #c6a16a;
+        --color-bg: #f8fafc;
+        --color-surface: #ffffff;
+        --color-text: #0f172a;
+    }
+
+    body {
+        @apply bg-slate-50 text-slate-900;
+    }
+}
+
+@layer components {
+    .card-premium {
+        @apply bg-white rounded-xl border border-slate-200 shadow-sm;
+    }
+
+    .input-premium {
+        @apply mt-1 w-full rounded-xl border-slate-300 text-sm text-slate-900;
+        @apply focus:border-[color:var(--color-accent)] focus:ring-[color:var(--color-accent)];
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center px-4 py-2 rounded-xl text-sm font-semibold;
+        @apply bg-[color:var(--color-primary)] text-white hover:bg-slate-800;
+    }
+
+    .btn-accent {
+        @apply inline-flex items-center justify-center px-4 py-2 rounded-xl text-sm font-semibold;
+        @apply bg-[color:var(--color-accent)] text-white hover:brightness-95;
+    }
+
+    .btn-soft {
+        @apply inline-flex items-center justify-center px-3 py-2 rounded-xl text-xs font-medium;
+        @apply border border-slate-300 text-slate-700 bg-white hover:bg-slate-50;
+    }
+
+    .badge-estado-alta {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800;
+    }
+
+    .badge-estado-baja {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800;
+    }
+
+    .badge-estado-difunto {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-100 text-rose-800;
+    }
+
+    .badge-patrimonio-excelente {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800;
+    }
+
+    .badge-patrimonio-bueno {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800;
+    }
+
+    .badge-patrimonio-regular {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-900;
+    }
+
+    .badge-patrimonio-restauracion {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-100 text-rose-800;
+    }
+
+    .badge-patrimonio-en-restauracion {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-900;
+    }
+
+    /* Tom Select — alineado con input-premium */
+    .ts-wrapper.form-select-premium .ts-control {
+        @apply mt-1 min-h-[42px] rounded-xl border border-slate-300 text-sm text-slate-900 px-3 py-2;
+        @apply focus-within:border-[color:var(--color-accent)] focus-within:ring-1 focus-within:ring-[color:var(--color-accent)];
+    }
+
+    .ts-wrapper.form-select-premium.dropdown-active .ts-control {
+        @apply border-[color:var(--color-accent)] ring-1 ring-[color:var(--color-accent)];
+    }
+
+    .ts-wrapper.form-select-premium .ts-dropdown {
+        @apply rounded-xl border border-slate-200 shadow-md mt-1;
+    }
+
+    .ts-wrapper.form-select-premium .option {
+        @apply text-sm py-2 px-3;
+    }
+
+    .ts-wrapper.form-select-premium .option.active {
+        @apply bg-slate-100 text-slate-900;
+    }
+
+    /* Portal del hermano — misma línea visual que el panel (marino + ocre) */
+    .portal-shell {
+        @apply min-h-dvh font-sans antialiased text-slate-800;
+        @apply bg-gradient-to-b from-slate-100 via-[color:var(--color-bg)] to-slate-100/90;
+    }
+
+    .portal-card {
+        @apply card-premium border-t-2 border-t-[color:var(--color-accent)] p-6 sm:p-8;
+    }
+
+    .portal-card-muted {
+        @apply rounded-xl border border-dashed border-slate-300/80 bg-white/90 p-5 sm:p-6 text-center text-sm text-slate-600 shadow-sm;
+    }
+
+    .portal-heading {
+        @apply text-xl sm:text-2xl font-bold text-[color:var(--color-primary)] tracking-tight;
+    }
+
+    .portal-sub {
+        @apply text-sm text-slate-600 mt-1.5 leading-relaxed;
+    }
+
+    .portal-label {
+        @apply block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1;
+    }
+
+    .portal-input {
+        @apply input-premium block w-full px-4 py-3 shadow-sm;
+    }
+
+    .portal-btn-primary {
+        @apply btn-primary w-full justify-center py-3 text-sm shadow-sm hover:bg-slate-800 transition;
+    }
+
+    .portal-btn-accent {
+        @apply btn-accent w-full justify-center py-3 text-sm shadow-sm transition hover:brightness-95;
+    }
+
+    .portal-btn-outline {
+        @apply w-full justify-center rounded-xl border-2 border-[color:var(--color-accent)] bg-white py-3 text-sm font-semibold text-[color:var(--color-primary)];
+        @apply transition hover:bg-amber-50/80;
+    }
+
+    .portal-link {
+        @apply text-sm font-semibold text-[color:var(--color-accent)] hover:underline underline-offset-2;
+    }
+
+    .portal-link-muted {
+        @apply text-sm text-slate-600 hover:text-[color:var(--color-primary)] transition;
+    }
+
+    .portal-alert-success {
+        @apply mb-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-900;
+    }
+
+    .portal-alert-error {
+        @apply mb-4 rounded-xl border border-rose-200 bg-rose-50 p-3 text-sm text-rose-900;
+    }
+}
