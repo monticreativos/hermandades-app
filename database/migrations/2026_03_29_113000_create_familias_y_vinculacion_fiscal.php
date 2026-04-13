@@ -30,7 +30,7 @@ return new class extends Migration
                 $table->boolean('es_cabeza_familia')->default(false)->after('estado');
             }
             if (! Schema::hasColumn('hermanos', 'beneficiario_fiscal_hermano_id')) {
-                $table->foreignId('beneficiario_fiscal_hermano_id')->nullable()->after('cuenta_contable_id')
+                $table->foreignId('beneficiario_fiscal_hermano_id')->nullable()->after('es_cabeza_familia')
                     ->constrained('hermanos')->nullOnDelete();
             }
         });

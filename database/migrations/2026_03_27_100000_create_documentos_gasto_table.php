@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('documentos_gasto', function (Blueprint $table) {
             $table->id();
             $table->foreignId('asiento_id')->constrained('asientos')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('proveedor_id')->nullable()->constrained('proveedores')->nullOnDelete();
             $table->unsignedTinyInteger('orden_linea');
             $table->string('archivo_path');
             $table->string('nombre_original');
