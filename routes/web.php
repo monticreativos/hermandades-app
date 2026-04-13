@@ -89,8 +89,17 @@ use App\Http\Controllers\Tienda\VentaTiendaTicketPdfController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    if (auth()->check()) {
+        return redirect()->route('dashboard');
+    }
+
+    $config = \App\Models\ConfiguracionHermandad::query()->first();
+    $nombreHermandad = $config?->nombre_corto
+        ?: $config?->nombre_hermandad
+        ?: config('app.name', 'GestaHer');
+
+    return view('home', ['nombreHermandad' => $nombreHermandad]);
+})->name('home');
 
 Route::get('/track/comunicado/{token}', ComunicadoMasivoTrackController::class)
     ->name('comunicados.track');
